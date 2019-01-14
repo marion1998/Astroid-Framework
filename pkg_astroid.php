@@ -65,9 +65,11 @@ class pkg_astroidInstallerScript {
             padding: 40px 0;
             text-align: center;
             border-radius: 0px;
+            margin-left: -15px;
+            margin-right: -15px;
             position: relative;
             border: 1px solid #f8f8f8;
-            background:url(<?php echo JURI::root(); ?>media/astroid/assets/images/moon-surface.png); 
+            background:#fff url(<?php echo JURI::root(); ?>media/astroid/assets/images/moon-surface.png); 
             background-repeat: no-repeat; 
             background-position: bottom;
          }

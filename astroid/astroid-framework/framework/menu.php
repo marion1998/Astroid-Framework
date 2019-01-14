@@ -11,7 +11,7 @@ jimport('astroid.framework.constants');
 jimport('joomla.application.module.helper');
 jimport('astroid.framework.template');
 
-JLoader::register('ModMenuHelper', JPATH_SITE . '/modules/mod_menu/helper.php');
+use Joomla\Module\Menu\Site\Helper\MenuHelper;
 
 class AstroidMenu {
 
@@ -27,10 +27,10 @@ class AstroidMenu {
       $menu_params = new JRegistry();
       $menu_params->loadString($header_menu_params);
 
-      $list = ModMenuHelper::getList($menu_params);
-      $base = ModMenuHelper::getBase($menu_params);
-      $active = ModMenuHelper::getActive($menu_params);
-      $default = ModMenuHelper::getDefault();
+      $list = MenuHelper::getList($menu_params);
+      $base = MenuHelper::getBase($menu_params);
+      $active = MenuHelper::getActive($menu_params);
+      $default = MenuHelper::getDefault();
       
       $active_id = $active->id;
       $default_id = $default->id;
@@ -496,10 +496,10 @@ class AstroidMenu {
       $menu_params = new JRegistry();
       $menu_params->loadString($header_menu_params);
       
-      $list = ModMenuHelper::getList($menu_params);
-      $base = ModMenuHelper::getBase($menu_params);
-      $active = ModMenuHelper::getActive($menu_params);
-      $default = ModMenuHelper::getDefault();
+      $list = MenuHelper::getList($menu_params);
+      $base = MenuHelper::getBase($menu_params);
+      $active = MenuHelper::getActive($menu_params);
+      $default = MenuHelper::getDefault();
       
       $active_id = $active->id;
       $default_id = $default->id;
