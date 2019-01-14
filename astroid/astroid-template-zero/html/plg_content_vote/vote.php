@@ -7,6 +7,11 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
+
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+
 /**
  * Layout variables
  * -----------------
@@ -20,26 +25,26 @@ defined('_JEXEC') or die;
 jimport('astroid.framework.template');
 $template = new AstroidFrameworkTemplate(JFactory::getApplication()->getTemplate(true));
 if (!$template->params->get('article_rating', 1)) {
-   $uri = clone JUri::getInstance();
+   $uri = clone Uri::getInstance();
    $uri->setVar('hitcount', '0');
 
 // Create option list for voting select box
    $options = array();
 
    for ($i = 1; $i < 6; $i++) {
-      $options[] = JHtml::_('select.option', $i, JText::sprintf('PLG_VOTE_VOTE', $i));
+      $options[] = HTMLHelper::_('select.option', $i, Text::sprintf('PLG_VOTE_VOTE', $i));
    }
    ?>
    <form method="post" action="<?php echo htmlspecialchars($uri->toString(), ENT_COMPAT, 'UTF-8'); ?>" class="form-inline">
       <div class="form-group mb-3 mr-sm-3">
-         <label class="unseen element-invisible sr-only" for="content_vote_<?php echo (int) $row->id; ?>"><?php echo JText::_('PLG_VOTE_LABEL'); ?></label>
-         <?php echo JHtml::_('select.genericlist', $options, 'user_rating', 'class="form-control"', 'value', 'text', '5', 'content_vote_' . (int) $row->id); ?>
+         <label class="unseen element-invisible sr-only" for="content_vote_<?php echo (int) $row->id; ?>"><?php echo Text::_('PLG_VOTE_LABEL'); ?></label>
+         <?php echo HTMLHelper::_('select.genericlist', $options, 'user_rating', 'class="form-control"', 'value', 'text', '5', 'content_vote_' . (int) $row->id); ?>
       </div>
-      <input class="btn btn-primary mb-3" type="submit" name="submit_vote" value="<?php echo JText::_('PLG_VOTE_RATE'); ?>" />
+      <input class="btn btn-primary mb-3" type="submit" name="submit_vote" value="<?php echo Text::_('PLG_VOTE_RATE'); ?>" />
       <input type="hidden" name="task" value="article.vote" />
       <input type="hidden" name="hitcount" value="0" />
       <input type="hidden" name="url" value="<?php echo htmlspecialchars($uri->toString(), ENT_COMPAT, 'UTF-8'); ?>" />
-      <?php echo JHtml::_('form.token'); ?>
+      <?php echo HTMLHelper::_('form.token'); ?>
    </form>
 
 <?php } else { ?>
